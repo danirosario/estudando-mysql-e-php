@@ -55,7 +55,15 @@ if ($result === false) {
                     <td><?php echo $row['nome']; ?></td>
                     <td><?php echo $row['idade']; ?></td>
                     <td><?php echo $row['email']; ?></td>
-                    <td><a href="editar.php?id=<?php echo $row['id']; ?>">Editar</a></td>
+                    <td>
+                        <a href="editar.php?id=<?php echo $row['id']; ?>">Editar</a> |
+                        <form method="POST" action="deletar.php" style="display:inline;">
+                            <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
+                            <button
+                                style="cursor:pointer; border-radius:5px; padding: 5px 10px; background:red; color: white; border: none"
+                                type="submit" onclick="return confirm('Tem certeza que deseja excluir?')">Deletar</button>
+                        </form>
+                    </td>
                 </tr>
             <?php endwhile; ?>
         <?php else: ?>
